@@ -39,13 +39,13 @@ export function Navbar() {
         <div className="flex items-center justify-between py-3 md:py-4">
           {/* Logo only */}
           <Link href="/" className="flex items-center group" aria-label="Hope IVF International home">
-            <div className="relative h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 overflow-hidden rounded-2xl bg-white shadow-sm transition-transform group-hover:scale-105">
+            <div className="relative h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 transition-transform group-hover:scale-105">
               <Image
                 src="/logo.png"
                 alt="Hope IVF International"
                 fill
                 sizes="(max-width: 1024px) 56px, 80px"
-                className="object-contain p-1"
+                className="object-contain"
                 priority
               />
             </div>
