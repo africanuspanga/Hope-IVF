@@ -5,6 +5,7 @@ export interface Service {
   fullDescription: string;
   category: string;
   icon: string;
+  image?: string;
   whatIs?: string;
   whoMayNeedIt?: string[];
   commonReasons?: string[];
@@ -18,13 +19,14 @@ export interface Service {
 export const SERVICES: Service[] = [
   {
     slug: "fertility-consultation",
-    title: "Fertility Consultation & Assessment",
+    title: "Fertility Check-Up & Assessment",
     shortDescription:
-      "Private consultation, medical history review, fertility testing guidance, and personalized next-step planning.",
+      "Private fertility check-up, medical history review, fertility testing guidance, and personalized next-step planning.",
     fullDescription:
-      "A fertility consultation is the first step in understanding your reproductive health. During your visit, the doctor will review your medical history, discuss your goals, and recommend appropriate evaluations to help clarify your options.",
+      "A fertility check-up is the first step in understanding your reproductive health. During your visit, the doctor will review your medical history, discuss your goals, and recommend appropriate evaluations to help clarify your options.",
     category: "Fertility & IVF Services",
     icon: "Stethoscope",
+    image: "/images/fertility-consultation.jpg",
     whatIs:
       "A confidential appointment with a fertility or women’s health specialist to discuss your history, concerns, and goals.",
     whoMayNeedIt: [
@@ -84,6 +86,7 @@ export const SERVICES: Service[] = [
       "In-vitro fertilization (IVF) is an assisted reproductive technology in which eggs and sperm are combined in a laboratory setting. We provide guidance, coordination, and medical oversight for patients considering IVF in Tanzania.",
     category: "Fertility & IVF Services",
     icon: "Microscope",
+    image: "/images/ivf-treatment-guidance.jpg",
     whatIs:
       "IVF is a process where eggs are retrieved, fertilized with sperm in the lab, and resulting embryos are transferred to the uterus.",
     whoMayNeedIt: [
@@ -144,6 +147,7 @@ export const SERVICES: Service[] = [
       "Intrauterine insemination (IUI) places prepared sperm directly into the uterus around the time of ovulation. It is a less invasive option than IVF and may be suitable for selected patients.",
     category: "Fertility & IVF Services",
     icon: "HeartPulse",
+    image: "/images/intrauterine-insemination.jpg",
     whatIs:
       "IUI involves placing washed and concentrated sperm into the uterus using a thin catheter, timed with ovulation.",
     whoMayNeedIt: [
@@ -200,6 +204,7 @@ export const SERVICES: Service[] = [
       "Male factor infertility contributes to a significant number of couples facing difficulty conceiving. Our assessment includes semen analysis, history review, and guidance on next steps.",
     category: "Male Fertility Services",
     icon: "Users",
+    image: "/images/male-fertility-assessment.jpg",
     whatIs:
       "An evaluation of male reproductive health, focusing on sperm quality, quantity, and overall fertility factors.",
     whoMayNeedIt: [
@@ -258,6 +263,7 @@ export const SERVICES: Service[] = [
       "Polycystic ovary syndrome (PCOS) is a common hormonal condition that can affect ovulation and fertility. We offer assessment, lifestyle guidance, and treatment planning for women with PCOS.",
     category: "Women’s Health & Gynecology",
     icon: "HeartPulse",
+    image: "/images/pcos-care.jpg",
     whatIs:
       "PCOS is a hormonal disorder that can cause irregular periods, excess androgen levels, and polycystic ovaries.",
     whoMayNeedIt: [
@@ -314,6 +320,7 @@ export const SERVICES: Service[] = [
       "Uterine fibroids are non-cancerous growths that can affect menstruation, fertility, and pregnancy. We provide evaluation and discuss medical or surgical management options when appropriate.",
     category: "Women’s Health & Gynecology",
     icon: "ShieldCheck",
+    image: "/images/fibroids-care.jpg",
     whatIs:
       "Fibroids are benign tumors of the uterus that vary in size, number, and location.",
     whoMayNeedIt: [
@@ -370,6 +377,7 @@ export const SERVICES: Service[] = [
       "Endometriosis can cause pain and affect fertility. We provide assessment, treatment planning, and coordination of medical or surgical care as needed.",
     category: "Women’s Health & Gynecology",
     icon: "HeartPulse",
+    image: "/images/endometriosis-care.jpg",
     whatIs:
       "Endometriosis occurs when tissue similar to the uterine lining grows outside the uterus, often causing pain and infertility.",
     whoMayNeedIt: [
@@ -426,6 +434,7 @@ export const SERVICES: Service[] = [
       "Egg freezing allows women to preserve eggs at their current age for future use. It may be chosen for medical reasons, before cancer treatment, or for personal family planning.",
     category: "Fertility Preservation",
     icon: "Clock",
+    image: "/images/egg-freezing.jpg",
     whatIs:
       "Egg freezing involves stimulating the ovaries, retrieving eggs, and freezing them for later use.",
     whoMayNeedIt: [
@@ -483,6 +492,7 @@ export const SERVICES: Service[] = [
       "Sperm freezing preserves sperm for future fertility treatment. It is often used before medical treatments that may affect fertility or for personal planning.",
     category: "Fertility Preservation",
     icon: "Clock",
+    image: "/images/sperm-freezing.jpg",
     whatIs:
       "Sperm freezing involves collecting, analyzing, and cryopreserving sperm samples for future use.",
     whoMayNeedIt: [
@@ -537,6 +547,7 @@ export const SERVICES: Service[] = [
       "Hysteroscopy uses a thin telescope to examine the inside of the uterus. It helps diagnose and sometimes treat conditions affecting the uterine cavity.",
     category: "Reproductive Surgery",
     icon: "Microscope",
+    image: "/images/hysteroscopy.jpg",
     whatIs:
       "A procedure to look inside the uterus using a hysteroscope passed through the cervix.",
     whoMayNeedIt: [
@@ -591,6 +602,7 @@ export const SERVICES: Service[] = [
       "Laparoscopy is a keyhole surgery used to diagnose and treat conditions such as endometriosis, fibroids, tubal problems, and ovarian cysts.",
     category: "Reproductive Surgery",
     icon: "Microscope",
+    image: "/images/laparoscopy.jpg",
     whatIs:
       "A surgical procedure using a small camera and instruments inserted through tiny abdominal incisions.",
     whoMayNeedIt: [
@@ -639,6 +651,175 @@ export const SERVICES: Service[] = [
       },
     ],
   },
+  {
+    slug: "tesa",
+    title: "TESA (Testicular Sperm Aspiration)",
+    shortDescription:
+      "A minor procedure to retrieve sperm directly from the testicle for use in IVF/ICSI when none is available in the ejaculate.",
+    fullDescription:
+      "TESA (Testicular Sperm Aspiration) is a minimally invasive procedure in which sperm is collected directly from the testicle using a fine needle. It is used for men who have no sperm in their ejaculate so that retrieved sperm can be used in IVF with ICSI.",
+    category: "Male Fertility Services",
+    icon: "Users",
+    image: "/images/testicular-sperm-aspiration.jpg",
+    whatIs:
+      "TESA uses a fine needle to aspirate sperm directly from the testicular tissue, usually under local anesthesia, for use in assisted reproduction.",
+    whoMayNeedIt: [
+      "Men with obstructive azoospermia (blockage)",
+      "Men with no sperm in the ejaculate",
+      "Previous vasectomy or failed reversal",
+      "Couples proceeding with IVF/ICSI",
+    ],
+    commonReasons: [
+      "Blockage preventing sperm from reaching the ejaculate",
+      "Absence of sperm in semen analysis",
+      "Sperm retrieval needed for ICSI",
+    ],
+    consultation: [
+      "Review of semen analysis and hormone tests",
+      "Physical examination",
+      "Discussion of retrieval and IVF/ICSI timing",
+      "Anesthesia and preparation planning",
+    ],
+    tests: [
+      "Semen analysis",
+      "Hormone tests (FSH, LH, testosterone)",
+      "Scrotal ultrasound if indicated",
+      "Genetic screening when appropriate",
+    ],
+    treatmentOptions: [
+      "TESA under local anesthesia",
+      "Retrieved sperm used fresh or frozen",
+      "Combined with IVF/ICSI",
+    ],
+    risks: [
+      "Mild pain, swelling, or bruising",
+      "Small risk of bleeding or infection",
+      "Sperm may not always be retrieved",
+    ],
+    faqs: [
+      {
+        question: "Is TESA painful?",
+        answer: "It is usually done under local anesthesia with mild discomfort afterward that settles within a few days.",
+      },
+      {
+        question: "Can retrieved sperm be frozen?",
+        answer: "Yes. Sperm retrieved during TESA can often be frozen for use in future IVF/ICSI cycles.",
+      },
+    ],
+  },
+  {
+    slug: "micro-tese",
+    title: "Micro-TESE (Microsurgical Testicular Sperm Extraction)",
+    shortDescription:
+      "A microsurgical procedure to locate and retrieve sperm from the testicle in cases of severe male-factor infertility.",
+    fullDescription:
+      "Micro-TESE (Microsurgical Testicular Sperm Extraction) uses an operating microscope to identify and extract sperm-producing areas within the testicle. It offers the best chance of finding sperm in men with non-obstructive azoospermia while removing minimal tissue.",
+    category: "Male Fertility Services",
+    icon: "Microscope",
+    image: "/images/micro-tese.jpg",
+    whatIs:
+      "Micro-TESE is a microsurgical technique that uses high magnification to find and remove the small areas of the testicle most likely to contain sperm for use in IVF/ICSI.",
+    whoMayNeedIt: [
+      "Men with non-obstructive azoospermia",
+      "Failed conventional sperm retrieval",
+      "Very low sperm production",
+      "Couples requiring sperm for ICSI",
+    ],
+    commonReasons: [
+      "No sperm produced in the ejaculate",
+      "Previous unsuccessful TESA or TESE",
+      "Genetic or hormonal causes of low production",
+    ],
+    consultation: [
+      "Detailed male-factor evaluation",
+      "Hormone and genetic assessment",
+      "Discussion of success rates and IVF/ICSI coordination",
+      "Surgical and anesthesia planning",
+    ],
+    tests: [
+      "Repeat semen analysis",
+      "Hormone tests (FSH, LH, testosterone)",
+      "Genetic testing (karyotype, Y-microdeletion)",
+      "Scrotal ultrasound",
+    ],
+    treatmentOptions: [
+      "Micro-TESE under anesthesia",
+      "Sperm used fresh or frozen for ICSI",
+      "Coordination with the female partner's IVF cycle",
+    ],
+    risks: [
+      "Standard surgical risks (bleeding, infection)",
+      "Temporary discomfort and swelling",
+      "Sperm may not be found in every case",
+    ],
+    faqs: [
+      {
+        question: "How is Micro-TESE different from TESA?",
+        answer: "Micro-TESE uses an operating microscope to target sperm-producing areas, improving retrieval in men with very low sperm production while removing less tissue.",
+      },
+      {
+        question: "What happens if sperm is found?",
+        answer: "Retrieved sperm can be used immediately or frozen for ICSI as part of an IVF cycle.",
+      },
+    ],
+  },
+  {
+    slug: "dna-fragmentation-test",
+    title: "DNA Fragmentation Test",
+    shortDescription:
+      "A specialized sperm test that measures DNA damage which may affect fertilization, embryo quality, and pregnancy outcomes.",
+    fullDescription:
+      "The Sperm DNA Fragmentation test assesses the integrity of the genetic material inside sperm. High levels of DNA fragmentation can affect fertilization, embryo development, and the risk of miscarriage, and may guide treatment decisions.",
+    category: "Male Fertility Services",
+    icon: "Microscope",
+    image: "/images/dna-fragmentation-test.jpg",
+    whatIs:
+      "A laboratory test that measures the percentage of sperm with damaged or fragmented DNA, giving information beyond a standard semen analysis.",
+    whoMayNeedIt: [
+      "Couples with unexplained infertility",
+      "Recurrent pregnancy loss",
+      "Failed IVF or IUI cycles",
+      "Men with lifestyle or environmental risk factors",
+    ],
+    commonReasons: [
+      "Repeated miscarriage",
+      "Poor embryo quality in previous cycles",
+      "Advanced paternal age",
+      "Smoking, infection, or exposure to toxins",
+    ],
+    consultation: [
+      "Review of fertility and medical history",
+      "Explanation of what the test measures",
+      "Discussion of results and next steps",
+      "Lifestyle and treatment guidance",
+    ],
+    tests: [
+      "Sperm DNA fragmentation index (DFI)",
+      "Standard semen analysis for comparison",
+      "Hormone tests if indicated",
+    ],
+    treatmentOptions: [
+      "Lifestyle and antioxidant guidance",
+      "Treatment of underlying causes (e.g., infection, varicocele)",
+      "Advanced sperm selection techniques for ICSI",
+      "Consideration of surgical sperm retrieval in selected cases",
+    ],
+    risks: [
+      "The test requires a semen sample only, with no procedural risk",
+      "Results are interpreted alongside other fertility tests",
+      "High fragmentation does not rule out pregnancy",
+    ],
+    faqs: [
+      {
+        question: "How is the sample collected?",
+        answer: "A semen sample is provided, similar to a standard semen analysis, and examined in the laboratory.",
+      },
+      {
+        question: "Can DNA fragmentation be improved?",
+        answer: "In many cases, lifestyle changes, treating underlying conditions, and antioxidant support can help reduce sperm DNA damage over time.",
+      },
+    ],
+  },
 ];
 
 export const SERVICE_CATEGORIES = [
@@ -657,7 +838,16 @@ export const SERVICE_CATEGORIES = [
   },
   {
     title: "Male Fertility Services",
-    services: ["male-fertility-assessment", "semen-analysis", "sperm-preparation", "sperm-freezing", "surgical-sperm-retrieval-referral"],
+    services: [
+      "male-fertility-assessment",
+      "tesa",
+      "micro-tese",
+      "dna-fragmentation-test",
+      "semen-analysis",
+      "sperm-preparation",
+      "sperm-freezing",
+      "surgical-sperm-retrieval-referral",
+    ],
   },
   {
     title: "Fertility Preservation",

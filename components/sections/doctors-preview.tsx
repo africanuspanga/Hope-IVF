@@ -17,10 +17,6 @@ export function DoctorsPreview() {
             <DoctorCard key={doctor.slug} doctor={doctor} />
           ))}
         </div>
-        <p className="mt-10 text-center text-sm text-deep-text/60 bg-slate-50 rounded-2xl p-4 max-w-2xl mx-auto">
-          Doctor profiles should include verified qualifications, professional registration details,
-          languages, and areas of focus.
-        </p>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Calendar, CheckCircle, AlertCircle } from "lucide-react";
 import { getServiceBySlug, SERVICES } from "@/lib/services-data";
 import { FAQAccordion } from "@/components/ui/faq-accordion";
@@ -87,9 +88,18 @@ export default async function ServiceDetailPage({ params }: Props) {
             <p className="text-base md:text-lg text-deep-text/70 leading-relaxed">{service.whatIs}</p>
           </div>
 
-          <div className="aspect-[16/9] w-full rounded-3xl bg-gradient-to-br from-brand-magenta-light to-brand-teal-light border border-slate-100 flex items-center justify-center mb-12">
-            <p className="text-deep-text/60 font-medium">Service image placeholder</p>
-          </div>
+          {service.image && (
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-slate-100 mb-12">
+              <Image
+                src={service.image}
+                alt={service.title}
+                fill
+                sizes="(max-width: 896px) 100vw, 896px"
+                className="object-cover"
+                priority
+              />
+            </div>
+          )}
 
           {/* Who may need it */}
           {service.whoMayNeedIt && service.whoMayNeedIt.length > 0 && (

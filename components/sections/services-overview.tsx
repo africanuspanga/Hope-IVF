@@ -20,6 +20,7 @@ export function ServicesOverview() {
               description={service.shortDescription}
               icon={service.icon}
               href={`/services/${service.slug}`}
+              image={service.image}
             />
           ))}
         </div>

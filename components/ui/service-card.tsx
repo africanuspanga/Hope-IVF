@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Icon } from "./icon";
 
@@ -7,17 +8,27 @@ interface ServiceCardProps {
   description: string;
   icon: string;
   href: string;
+  image?: string;
 }
 
-export function ServiceCard({ title, description, icon, href }: ServiceCardProps) {
+export function ServiceCard({ title, description, icon, href, image }: ServiceCardProps) {
   return (
     <Link
       href={href}
       className="group flex flex-col overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
     >
-      {/* Empty image container */}
       <div className="relative aspect-[4/3] w-full bg-gradient-to-br from-brand-magenta/5 to-brand-teal/10 overflow-hidden">
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-brand-magenta/10 to-brand-teal/20" />
+        {image ? (
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-brand-magenta/10 to-brand-teal/20" />
+        )}
       </div>
 
       <div className="flex flex-col flex-1 p-6 md:p-8">

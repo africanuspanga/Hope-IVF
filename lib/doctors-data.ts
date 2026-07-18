@@ -14,55 +14,34 @@ export interface Doctor {
 
 export const DOCTORS: Doctor[] = [
   {
-    slug: "dr-placeholder-one",
-    name: "Dr. Placeholder Name",
-    title: "Fertility Specialist / Gynecologist",
-    specialty: "Reproductive Medicine & Women’s Health",
-    languages: ["English", "Swahili"],
-    focusAreas: ["IVF & IUI", "PCOS", "Endometriosis", "Fertility Preservation"],
-    education: [
-      "Medical Degree – University Name (Placeholder)",
-      "Specialist Training – Institution Name (Placeholder)",
+    slug: "dr-refik-sozen",
+    name: "Dr. Refik Sozen",
+    title: "IVF Specialist & Gynecologist",
+    specialty: "Reproductive Medicine & Gynecology",
+    languages: ["Turkish"],
+    focusAreas: [
+      "IVF",
+      "Laparoscopy",
+      "Cosmetic Gynecology",
+      "Intrauterine Procedures",
+      "Detailed Fetal Assessment",
     ],
-    registration: ["Medical Council Registration Number (Placeholder)"],
-    experience: "Years of experience to be confirmed",
-    schedule: "Monday – Friday, by appointment",
+    experience: "35 years in the IVF sector",
+    schedule: "Monday – Saturday, by appointment",
     bio:
-      "This doctor profile is a placeholder. Please replace with verified qualifications, professional registration details, languages spoken, areas of focus, and clinic schedule.",
+      "Dr. Refik Sozen brings 35 years of experience in the IVF sector. His areas of focus include IVF, laparoscopy, cosmetic gynecology, intrauterine procedures, and detailed fetal assessment.",
   },
   {
-    slug: "dr-placeholder-two",
-    name: "Dr. Placeholder Name Two",
-    title: "Fertility Specialist / Embryologist",
-    specialty: "Laboratory & Embryology Support",
-    languages: ["English"],
-    focusAreas: ["Embryology", "IVF Laboratory", "Semen Analysis", "Egg Freezing"],
-    education: [
-      "Medical Degree – University Name (Placeholder)",
-      "Embryology Training – Institution Name (Placeholder)",
-    ],
-    registration: ["Medical Council Registration Number (Placeholder)"],
-    experience: "Years of experience to be confirmed",
-    schedule: "Monday – Friday, by appointment",
+    slug: "mian-abu-bakar",
+    name: "Mian Abu Bakar",
+    title: "Embryologist",
+    specialty: "IVF Laboratory & Embryology",
+    languages: ["English", "Urdu", "Punjabi"],
+    focusAreas: ["IVF Laboratory Embryology"],
+    experience: "3 years of experience in an IVF laboratory",
+    schedule: "Monday – Saturday, by appointment",
     bio:
-      "This doctor profile is a placeholder. Please replace with verified qualifications, professional registration details, languages spoken, areas of focus, and clinic schedule.",
-  },
-  {
-    slug: "dr-placeholder-three",
-    name: "Dr. Placeholder Name Three",
-    title: "Women’s Health Specialist / Gynecologist",
-    specialty: "Gynecology & Reproductive Surgery",
-    languages: ["English", "Swahili"],
-    focusAreas: ["Fibroids", "Endometriosis", "Hysteroscopy", "Laparoscopy"],
-    education: [
-      "Medical Degree – University Name (Placeholder)",
-      "Gynecology Specialist Training – Institution Name (Placeholder)",
-    ],
-    registration: ["Medical Council Registration Number (Placeholder)"],
-    experience: "Years of experience to be confirmed",
-    schedule: "Monday – Friday, by appointment",
-    bio:
-      "This doctor profile is a placeholder. Please replace with verified qualifications, professional registration details, languages spoken, areas of focus, and clinic schedule.",
+      "Mian Abu Bakar is an embryologist with 3 years of experience in the IVF laboratory, focusing on the embryology processes that support successful fertility treatment.",
   },
 ];
 

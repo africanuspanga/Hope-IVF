@@ -6,7 +6,7 @@ export const CLINIC = {
   whatsapp: "+255 XXX XXX XXX",
   email: "info@hopeivfinternational.com",
   address: "Dar es Salaam, Tanzania",
-  hours: "Monday – Friday: 9:00 AM – 5:00 PM",
+  hours: "Monday – Saturday: 9:00 AM – 4:00 PM",
 };
 
 export const NAV_LINKS = [

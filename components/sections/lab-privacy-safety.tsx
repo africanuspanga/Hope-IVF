@@ -1,4 +1,5 @@
-import { ShieldCheck, Microscope } from "lucide-react";
+import Image from "next/image";
+import { ShieldCheck } from "lucide-react";
 import { SAFETY_CARDS } from "@/lib/site-data";
 
 export function LabPrivacySafety() {
@@ -32,14 +33,14 @@ export function LabPrivacySafety() {
           </div>
 
           <div className="order-1 lg:order-2">
-            <div className="aspect-square max-w-lg mx-auto overflow-hidden rounded-3xl bg-gradient-to-br from-brand-teal-light to-brand-magenta-light border border-slate-100 flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="inline-flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-xl mb-6">
-                  <Microscope className="h-12 w-12 text-brand-teal" />
-                </div>
-                <p className="text-deep-text/60 font-medium">Laboratory / microscopy image placeholder</p>
-                <p className="text-xs text-deep-text/40 mt-2">Replace with verified clinic laboratory photo</p>
-              </div>
+            <div className="relative aspect-square max-w-lg mx-auto overflow-hidden rounded-3xl border border-slate-100">
+              <Image
+                src="/images/fertility-image.jpg"
+                alt="Fertility laboratory and care at Hope IVF International"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
           </div>
         </div>

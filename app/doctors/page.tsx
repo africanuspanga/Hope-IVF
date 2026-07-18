@@ -6,7 +6,7 @@ import { DOCTORS } from "@/lib/doctors-data";
 export const metadata: Metadata = {
   title: "Our Doctors | Hope IVF International",
   description:
-    "Meet the fertility and women’s health team at Hope IVF International in Dar es Salaam. Doctor profiles should be replaced with verified qualifications.",
+    "Meet the fertility and women’s health team at Hope IVF International in Dar es Salaam, including our IVF specialist and embryologist.",
 };
 
 export default function DoctorsPage() {
@@ -20,14 +20,6 @@ export default function DoctorsPage() {
 
       <section className="py-16 md:py-24 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-amber-50 border border-amber-100 p-4 md:p-6 mb-12">
-            <p className="text-sm md:text-base text-amber-900/80 leading-relaxed">
-              <strong>Important:</strong> Doctor profiles below are placeholders. Please replace
-              them with verified qualifications, professional registration details, languages
-              spoken, areas of focus, and clinic schedules before publishing.
-            </p>
-          </div>
-
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {DOCTORS.map((doctor) => (
               <DoctorCard key={doctor.slug} doctor={doctor} />

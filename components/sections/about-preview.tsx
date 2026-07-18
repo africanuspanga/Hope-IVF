@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, MapPin, HeartPulse, ShieldCheck } from "lucide-react";
 
 export function AboutPreview() {
@@ -33,13 +34,14 @@ export function AboutPreview() {
           </div>
 
           <div className="relative">
-            <div className="aspect-[4/3] overflow-hidden rounded-3xl bg-gradient-to-br from-brand-magenta-light to-brand-teal-light border border-slate-100 flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-lg mb-4">
-                  <HeartPulse className="h-10 w-10 text-brand-magenta" />
-                </div>
-                <p className="text-deep-text/60 font-medium">Clinic interior image placeholder</p>
-              </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-100">
+              <Image
+                src="/images/about-us.jpg"
+                alt="Hope IVF International clinic"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-3">

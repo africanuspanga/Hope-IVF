@@ -39,6 +39,7 @@ export default function ServicesPage() {
                 description={service.shortDescription}
                 icon={service.icon}
                 href={`/services/${service.slug}`}
+                image={service.image}
               />
             ))}
           </div>

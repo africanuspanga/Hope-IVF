@@ -25,6 +25,12 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
         <h3 className="text-xl font-bold text-deep-text mb-1">{doctor.name}</h3>
         <p className="text-brand-magenta font-medium text-sm mb-4">{doctor.title}</p>
         <div className="space-y-2 mb-6">
+          {doctor.experience && (
+            <p className="text-sm text-deep-text/70">
+              <span className="font-semibold text-deep-text">Experience:</span>{" "}
+              {doctor.experience}
+            </p>
+          )}
           <p className="text-sm text-deep-text/70">
             <span className="font-semibold text-deep-text">Languages:</span>{" "}
             {doctor.languages.join(", ")}
@@ -34,9 +40,6 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
             {doctor.focusAreas.join(", ")}
           </p>
         </div>
-        <p className="text-xs text-deep-text/50 mb-6 bg-slate-50 p-3 rounded-xl border border-slate-100">
-          Profile placeholder — replace with verified qualifications and registration details.
-        </p>
         <Link
           href={`/doctors#${doctor.slug}`}
           className="mt-auto inline-flex items-center gap-2 rounded-full bg-deep-text px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-magenta w-fit"
