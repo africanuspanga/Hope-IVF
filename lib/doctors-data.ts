@@ -15,7 +15,7 @@ export interface Doctor {
 export const DOCTORS: Doctor[] = [
   {
     slug: "dr-refik-sozen",
-    name: "Dr. Refik Sozen",
+    name: "Dr. Refik Sözen",
     title: "IVF Specialist & Gynecologist",
     specialty: "Reproductive Medicine & Gynecology",
     languages: ["Turkish"],
@@ -29,7 +29,7 @@ export const DOCTORS: Doctor[] = [
     experience: "35 years in the IVF sector",
     schedule: "Monday – Saturday, by appointment",
     bio:
-      "Dr. Refik Sozen brings 35 years of experience in the IVF sector. His areas of focus include IVF, laparoscopy, cosmetic gynecology, intrauterine procedures, and detailed fetal assessment.",
+      "Dr. Refik Sözen brings 35 years of experience in the IVF sector. His areas of focus include IVF, laparoscopy, cosmetic gynecology, intrauterine procedures, and detailed fetal assessment.",
   },
   {
     slug: "mian-abu-bakar",
