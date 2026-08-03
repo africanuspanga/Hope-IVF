@@ -10,6 +10,7 @@ export interface Doctor {
   experience?: string;
   schedule?: string;
   bio?: string;
+  image?: string;
 }
 
 export const DOCTORS: Doctor[] = [
@@ -28,6 +29,7 @@ export const DOCTORS: Doctor[] = [
     ],
     experience: "35 years in the IVF sector",
     schedule: "Monday – Saturday, by appointment",
+    image: "/images/dr-refik-sozen.jpeg",
     bio:
       "Dr. Refik Sözen brings 35 years of experience in the IVF sector. His areas of focus include IVF, laparoscopy, cosmetic gynecology, intrauterine procedures, and detailed fetal assessment.",
   },
@@ -40,6 +42,7 @@ export const DOCTORS: Doctor[] = [
     focusAreas: ["IVF Laboratory Embryology"],
     experience: "3 years of experience in an IVF laboratory",
     schedule: "Monday – Saturday, by appointment",
+    image: "/images/mian-abu-bakar.jpeg",
     bio:
       "Mian Abu Bakar is an embryologist with 3 years of experience in the IVF laboratory, focusing on the embryology processes that support successful fertility treatment.",
   },

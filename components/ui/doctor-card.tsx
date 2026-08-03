@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import type { Doctor } from "@/lib/doctors-data";
 
@@ -10,13 +11,23 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
   return (
     <div className="group flex flex-col rounded-3xl bg-white border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
       <div className="relative h-72 w-full bg-gradient-to-br from-brand-magenta-light to-brand-teal-light overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative h-40 w-40 rounded-full bg-white/80 shadow-lg flex items-center justify-center">
-            <span className="text-4xl font-bold text-brand-magenta">
-              {doctor.name.split(" ").pop()?.charAt(0)}
-            </span>
+        {doctor.image ? (
+          <Image
+            src={doctor.image}
+            alt={doctor.name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative h-40 w-40 rounded-full bg-white/80 shadow-lg flex items-center justify-center">
+              <span className="text-4xl font-bold text-brand-magenta">
+                {doctor.name.split(" ").pop()?.charAt(0)}
+              </span>
+            </div>
           </div>
-        </div>
+        )}
         <div className="absolute top-4 right-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-brand-teal backdrop-blur-sm">
           {doctor.specialty}
         </div>
