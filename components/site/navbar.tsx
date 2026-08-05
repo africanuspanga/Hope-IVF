@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Phone, Calendar } from "lucide-react";
-import { NAV_LINKS } from "@/lib/site-data";
+import { NAV_LINKS, CLINIC } from "@/lib/site-data";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -110,7 +110,7 @@ export function Navbar() {
             </div>
             <div className="mt-6 flex flex-col gap-3 border-t border-pink-100 pt-5">
               <a
-                href="tel:+255XXXXXXXXX"
+                href={`tel:+${CLINIC.phone.replace(/\D/g, "")}`}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-teal/20 bg-brand-teal-light px-5 py-3 text-sm font-semibold text-brand-teal transition-all hover:bg-brand-teal/10"
               >
                 <Phone className="h-4 w-4" />

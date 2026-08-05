@@ -2,10 +2,10 @@ export const CLINIC = {
   name: "Hope IVF International",
   tagline: "An AMERICAN Healthcare Institution",
   location: "Dar es Salaam, Tanzania",
-  phone: "+255 XXX XXX XXX",
-  whatsapp: "+255 XXX XXX XXX",
-  email: "info@hopeivfinternational.com",
-  address: "Dar es Salaam, Tanzania",
+  phone: "+255 725 829 595",
+  whatsapp: "+255 725 829 595",
+  email: "info@hopeivf.co.tz",
+  address: "Tropical Center, New Bagamoyo Road, P.O. Box 2083, Dar es Salaam, Tanzania",
   hours: "Monday – Saturday: 9:00 AM – 4:00 PM",
 };
 

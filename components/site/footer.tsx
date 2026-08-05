@@ -104,18 +104,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Disclaimer */}
+        {/* Copyright */}
         <div className="mt-14 pt-8 border-t border-white/10">
-          <p className="text-xs text-white/50 leading-relaxed mb-3">
-            Information on this website is for general education only and does not replace
-            consultation with a qualified medical professional. Treatment suitability depends on
-            individual medical assessment.
-          </p>
-          <p className="text-xs text-white/50 leading-relaxed mb-6">
-            This website and appointment form are not for medical emergencies. If you are
-            experiencing a medical emergency, please contact emergency services or visit the nearest
-            hospital immediately.
-          </p>
           <p className="text-xs text-white/40">
             © {new Date().getFullYear()} {CLINIC.name}. All rights reserved.
           </p>

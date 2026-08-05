@@ -12,7 +12,7 @@ export function DoctorsPreview() {
           subtitle="Experienced specialists dedicated to supporting your fertility journey with care and confidentiality."
           align="center"
         />
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 max-w-4xl mx-auto">
           {DOCTORS.map((doctor) => (
             <DoctorCard key={doctor.slug} doctor={doctor} />
           ))}

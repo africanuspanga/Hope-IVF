@@ -1,22 +1,14 @@
 import Link from "next/link";
-import { Phone, Calendar, MessageCircle, MapPin, CheckCircle } from "lucide-react";
+import { Calendar, MessageCircle, CheckCircle } from "lucide-react";
 import { CLINIC } from "@/lib/site-data";
+import { HeroVideo } from "@/components/sections/hero-video";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background media */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/logo.png"
-          className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
+        <HeroVideo />
         <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/40" />
         <div className="absolute -top-24 -left-24 h-80 w-80 rounded-full bg-brand-magenta/20 blur-3xl" />
         <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-brand-teal/20 blur-3xl" />
@@ -60,29 +52,6 @@ export function HeroSection() {
                   <MessageCircle className="h-5 w-5" />
                   Talk to Us on WhatsApp
                 </a>
-              </div>
-
-              <p className="mt-5 text-sm text-deep-text/60 flex items-center gap-2 flex-wrap">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-magenta" />
-                Private consultations
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-teal" />
-                Doctor-led care
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-magenta" />
-                Dar es Salaam, Tanzania
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={`tel:${CLINIC.phone.replace(/\s/g, "")}`}
-                  className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-slate-100 px-4 py-2 text-sm font-medium text-deep-text hover:border-brand-magenta/30 transition-colors"
-                >
-                  <Phone className="h-4 w-4 text-brand-magenta" />
-                  {CLINIC.phone}
-                </a>
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-slate-100 px-4 py-2 text-sm font-medium text-deep-text">
-                  <MapPin className="h-4 w-4 text-brand-teal" />
-                  {CLINIC.location}
-                </span>
               </div>
             </div>
 

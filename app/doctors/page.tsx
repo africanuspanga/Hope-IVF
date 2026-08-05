@@ -20,7 +20,7 @@ export default function DoctorsPage() {
 
       <section className="py-16 md:py-24 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 max-w-4xl mx-auto">
             {DOCTORS.map((doctor) => (
               <DoctorCard key={doctor.slug} doctor={doctor} />
             ))}

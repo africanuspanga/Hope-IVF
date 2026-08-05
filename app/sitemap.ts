@@ -3,7 +3,7 @@ import { SERVICES } from "@/lib/services-data";
 import { RESOURCES } from "@/lib/resources-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://hopeivfinternational.com";
+  const baseUrl = "https://www.hopeivf.co.tz";
 
   const staticRoutes = [
     "/",

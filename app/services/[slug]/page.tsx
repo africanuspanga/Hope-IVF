@@ -38,7 +38,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     "@type": "MedicalWebPage",
     name: service.title,
     description: service.shortDescription,
-    url: `https://hopeivfinternational.com/services/${service.slug}`,
+    url: `https://www.hopeivf.co.tz/services/${service.slug}`,
     mainEntity: {
       "@type": "MedicalProcedure",
       name: service.title,

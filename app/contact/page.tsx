@@ -40,7 +40,6 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-bold text-deep-text mb-1">Location</h3>
                     <p className="text-sm text-deep-text/70">{CLINIC.address}</p>
-                    <p className="text-xs text-deep-text/50 mt-1">Landmark and directions placeholder</p>
                   </div>
                 </div>
 
@@ -90,14 +89,15 @@ export default function ContactPage() {
 
             {/* Map + What to bring */}
             <div className="space-y-8">
-              <div className="aspect-video rounded-3xl bg-gradient-to-br from-brand-magenta-light to-brand-teal-light border border-slate-100 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <MapPin className="h-10 w-10 text-brand-teal mx-auto mb-3" />
-                  <p className="text-deep-text/60 font-medium">Google Maps placeholder</p>
-                  <p className="text-xs text-deep-text/40 mt-1">
-                    Embed your clinic location map here
-                  </p>
-                </div>
+              <div className="aspect-video overflow-hidden rounded-3xl border border-slate-100">
+                <iframe
+                  title="Hope IVF International location — Tropical Center, New Bagamoyo Road, Dar es Salaam"
+                  src="https://www.google.com/maps?q=Tropical+Center,+New+Bagamoyo+Road,+Dar+es+Salaam,+Tanzania&output=embed"
+                  className="h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
               </div>
 
               <div className="rounded-3xl bg-soft-pink border border-pink-100/60 p-6 md:p-8">

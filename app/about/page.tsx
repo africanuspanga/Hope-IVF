@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/sections/page-hero";
 import { Heart, Shield, Eye, Users, Sparkles, Landmark } from "lucide-react";
 import Link from "next/link";
@@ -60,8 +61,14 @@ export default function AboutPage() {
                 </Link>
               </div>
             </div>
-            <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-brand-magenta-light to-soft-teal border border-slate-100 flex items-center justify-center">
-              <p className="text-deep-text/60 font-medium">Clinic team / interior image placeholder</p>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-100">
+              <Image
+                src="/images/about-us.jpg"
+                alt="Hope IVF International care team with a patient"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
           </div>
         </div>
@@ -123,8 +130,14 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 bg-soft-teal">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
-            <div className="order-2 lg:order-1 aspect-[4/3] rounded-3xl bg-gradient-to-br from-soft-teal to-brand-magenta-light border border-slate-100 flex items-center justify-center">
-              <p className="text-deep-text/60 font-medium">Consultation room image placeholder</p>
+            <div className="relative order-2 lg:order-1 aspect-[4/3] overflow-hidden rounded-3xl border border-slate-100">
+              <Image
+                src="/images/fertility-image.jpg"
+                alt="Patient reviewing a pregnancy test result"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
             <div className="order-1 lg:order-2">
               <span className="inline-block text-xs font-bold uppercase tracking-[0.15em] text-brand-magenta mb-3">

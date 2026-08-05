@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://hopeivfinternational.com/sitemap.xml",
+    sitemap: "https://www.hopeivf.co.tz/sitemap.xml",
   };
 }
