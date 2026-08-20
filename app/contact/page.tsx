@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/sections/page-hero";
 import { Phone, MessageCircle, Mail, MapPin, Clock, Calendar, FileText } from "lucide-react";
@@ -89,6 +90,21 @@ export default function ContactPage() {
 
             {/* Map + What to bring */}
             <div className="space-y-8">
+              <figure className="overflow-hidden rounded-3xl border border-slate-100">
+                <div className="relative aspect-[16/10]">
+                  <Image
+                    src="/images/hero/embryology-lab.jpg"
+                    alt="The embryology laboratory at Hope IVF International in Dar es Salaam"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="bg-slate-50 px-5 py-4 text-sm text-deep-text/70">
+                  Our clinic and embryology laboratory at {CLINIC.address}
+                </figcaption>
+              </figure>
+
               <div className="aspect-video overflow-hidden rounded-3xl border border-slate-100">
                 <iframe
                   title="Hope IVF International location — Tropical Center, New Bagamoyo Road, Dar es Salaam"

@@ -36,8 +36,8 @@ export function AboutPreview() {
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-100">
               <Image
-                src="/images/about-us.jpg"
-                alt="Hope IVF International clinic"
+                src="/images/clinic/embryology-icsi.jpg"
+                alt="Embryologist working at the micromanipulation microscope in the Hope IVF International laboratory"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

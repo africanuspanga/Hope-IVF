@@ -19,6 +19,27 @@ const VALUES = [
   { icon: Sparkles, title: "Hope", text: "We support our patients with realistic optimism and steady guidance." },
 ];
 
+const CLINIC_GALLERY = [
+  {
+    src: "/images/clinic/cryo-tank-handling.jpg",
+    alt: "Embryologist retrieving a cane from a cryogenic storage tank at Hope IVF International",
+    caption: "Cryopreservation handled by trained embryologists",
+    position: "object-center",
+  },
+  {
+    src: "/images/clinic/cryo-storage-tank.jpg",
+    alt: "Cryogenic storage tank in the Hope IVF International laboratory",
+    caption: "Long-term storage for eggs, sperm, and embryos",
+    position: "object-top",
+  },
+  {
+    src: "/images/clinic/embryologist-team.jpg",
+    alt: "Embryologist at Hope IVF International in the clinic laboratory",
+    caption: "A dedicated in-house embryology team",
+    position: "object-top",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -61,10 +82,10 @@ export default function AboutPage() {
                 </Link>
               </div>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-100">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-slate-100">
               <Image
-                src="/images/about-us.jpg"
-                alt="Hope IVF International care team with a patient"
+                src="/images/clinic/embryologist-portrait.jpg"
+                alt="Embryologist at Hope IVF International seated in the clinic laboratory"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -132,8 +153,8 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div className="relative order-2 lg:order-1 aspect-[4/3] overflow-hidden rounded-3xl border border-slate-100">
               <Image
-                src="/images/fertility-image.jpg"
-                alt="Patient reviewing a pregnancy test result"
+                src="/images/clinic/embryologist-microscope.jpg"
+                alt="Embryologist preparing samples at the laboratory microscope at Hope IVF International"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -161,6 +182,43 @@ export default function AboutPage() {
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Inside the clinic */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+            <span className="inline-block text-xs font-bold uppercase tracking-[0.15em] text-brand-magenta mb-3">
+              Inside Our Clinic
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-deep-text leading-[1.1] mb-5">
+              Our laboratory in Dar es Salaam
+            </h2>
+            <p className="text-base md:text-lg text-deep-text/70 leading-relaxed">
+              Fertility treatment depends on the quality of the laboratory behind it. Here is a
+              look inside the embryology lab where our team works every day.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {CLINIC_GALLERY.map((photo) => (
+              <figure key={photo.src} className="group">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-3xl border border-slate-100 bg-slate-50">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className={`object-cover ${photo.position} transition-transform duration-500 group-hover:scale-[1.04]`}
+                  />
+                </div>
+                <figcaption className="mt-4 text-sm font-semibold text-deep-text">
+                  {photo.caption}
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>

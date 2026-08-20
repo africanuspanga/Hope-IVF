@@ -1,28 +1,30 @@
 import Link from "next/link";
 import { Calendar, MessageCircle, CheckCircle } from "lucide-react";
 import { CLINIC } from "@/lib/site-data";
-import { HeroVideo } from "@/components/sections/hero-video";
+import { HeroSlider } from "@/components/sections/hero-slider";
+
+const HERO_POINTS = [
+  "Confidential appointment",
+  "Doctor-led assessment",
+  "Personalized care plan",
+  "Dar es Salaam clinic",
+];
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      {/* Background media */}
-      <div className="absolute inset-0">
-        <HeroVideo />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/40" />
-        <div className="absolute -top-24 -left-24 h-80 w-80 rounded-full bg-brand-magenta/20 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-brand-teal/20 blur-3xl" />
-      </div>
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-soft-pink via-white to-soft-teal">
+      <div className="absolute -top-24 -left-24 h-80 w-80 rounded-full bg-brand-magenta/20 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-brand-teal/20 blur-3xl" />
 
       <div className="relative z-10 flex min-h-screen items-center">
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-32">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-40 md:pb-44">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left content */}
             <div className="max-w-2xl">
               <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-brand-teal mb-4">
                 Fertility & IVF Care in Dar es Salaam
               </span>
-              <h1 className="text-5xl font-bold tracking-tight text-deep-text leading-[0.95] sm:text-6xl md:text-7xl lg:text-8xl">
+              <h1 className="text-5xl font-bold tracking-tight text-deep-text leading-[0.95] sm:text-6xl md:text-7xl">
                 Advanced.
                 <br />
                 Compassionate.
@@ -53,35 +55,20 @@ export function HeroSection() {
                   Talk to Us on WhatsApp
                 </a>
               </div>
+
+              <ul className="mt-10 grid gap-3 sm:grid-cols-2 max-w-lg">
+                {HERO_POINTS.map((item) => (
+                  <li key={item} className="flex items-center gap-2.5 text-deep-text/80">
+                    <CheckCircle className="h-5 w-5 shrink-0 text-brand-magenta" />
+                    <span className="text-sm font-medium">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Right floating card */}
-            <div className="hidden lg:block">
-              <div className="ml-auto max-w-md rounded-3xl border border-white/60 bg-white/70 p-8 shadow-2xl backdrop-blur-xl">
-                <h3 className="text-2xl font-bold text-deep-text mb-6">
-                  Private fertility consultation
-                </h3>
-                <ul className="space-y-4 mb-8">
-                  {[
-                    "Confidential appointment",
-                    "Doctor-led assessment",
-                    "Personalized care plan",
-                    "Dar es Salaam clinic",
-                  ].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-deep-text/80">
-                      <CheckCircle className="h-5 w-5 shrink-0 text-brand-magenta" />
-                      <span className="font-medium">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/appointment"
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-brand-magenta px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-magenta/20 transition-all hover:bg-brand-magenta-dark"
-                >
-                  <Calendar className="h-5 w-5" />
-                  Request Appointment
-                </Link>
-              </div>
+            {/* Right image slider */}
+            <div className="lg:pl-4">
+              <HeroSlider />
             </div>
           </div>
         </div>
