@@ -1,88 +1,129 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { Pause, Play } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const SLIDES = [
   {
-    src: "/images/hero/lab-microscope.jpg",
-    alt: "Embryologist examining a sample under the microscope in the Hope IVF International laboratory",
-    caption: "Our embryology laboratory",
+    src: "/videos/hero-1.mp4",
+    poster: "/videos/hero-1-poster.jpg",
+    label: "Hope IVF International: an overview of our fertility services",
+    caption: "Our fertility services",
   },
   {
-    src: "/images/hero/embryology-lab.jpg",
-    alt: "Microscope and incubator in the Hope IVF International embryology laboratory",
-    caption: "Modern equipment, carefully maintained",
-  },
-  {
-    src: "/images/hero/cryo-storage.jpg",
-    alt: "Embryologist opening a cryogenic storage tank at Hope IVF International",
-    caption: "On-site cryopreservation",
+    src: "/videos/hero-2.mp4",
+    poster: "/videos/hero-2-poster.jpg",
+    label: "5D ultrasound scanning, now available at Hope IVF International",
+    caption: "5D ultrasound — now available",
   },
 ];
 
-const INTERVAL_MS = 6000;
-
 export function HeroSlider() {
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  // Mobile browsers only autoplay a video that is muted at the *property*
+  // level — React does not reliably set that through the attribute alone.
+  const play = useCallback((video: HTMLVideoElement) => {
+    video.muted = true;
+    video.playsInline = true;
+    video.play().catch(() => {
+      // Autoplay can still be blocked (e.g. iOS Low Power Mode). Retry on the
+      // first interaction so the slider starts without needing a refresh.
+      const resume = () => {
+        video.play().catch(() => {});
+        window.removeEventListener("touchstart", resume);
+        window.removeEventListener("click", resume);
+      };
+      window.addEventListener("touchstart", resume, { once: true });
+      window.addEventListener("click", resume, { once: true });
+    });
+  }, []);
+
+  // Each video restarts from the top when it becomes the active slide. The
+  // outgoing one is only paused, so it holds its last frame while sliding out.
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+      if (!video) return;
+      if (index === active) {
+        video.currentTime = 0;
+      } else {
+        video.pause();
+      }
+    });
+  }, [active]);
 
   useEffect(() => {
-    // Honor the OS "reduce motion" setting — hold the first slide instead of
-    // cycling for people who are sensitive to movement.
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reduceMotion.matches) return;
+    const video = videoRefs.current[active];
+    if (!video) return;
+    if (paused) video.pause();
+    else play(video);
+  }, [active, paused, play]);
 
-    const timer = window.setInterval(() => {
-      setActive((current) => (current + 1) % SLIDES.length);
-    }, INTERVAL_MS);
-
-    return () => window.clearInterval(timer);
-  }, []);
+  // Hold back the other clips until the first one is rolling, so the page does
+  // not spend the visitor's data on all of them at once.
+  const warmNextSlides = () => {
+    videoRefs.current.forEach((video, index) => {
+      if (!video || index === 0 || video.preload === "auto") return;
+      video.preload = "auto";
+      video.load();
+    });
+  };
 
   return (
     <div className="relative">
-      <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-white/70 bg-slate-100 shadow-2xl shadow-slate-300/50">
+      <div className="relative aspect-video overflow-hidden rounded-[2rem] border border-white/70 bg-slate-100 shadow-2xl shadow-slate-300/50">
         {SLIDES.map((slide, index) => (
-          <div
+          <video
             key={slide.src}
+            ref={(node) => {
+              videoRefs.current[index] = node;
+            }}
+            src={slide.src}
+            poster={slide.poster}
+            aria-label={slide.label}
             aria-hidden={index !== active}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === active ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              priority={index === 0}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-center"
-            />
-          </div>
+            muted
+            playsInline
+            autoPlay={index === 0}
+            preload={index === 0 ? "auto" : "metadata"}
+            onPlaying={index === 0 ? warmNextSlides : undefined}
+            onEnded={() => setActive((current) => (current + 1) % SLIDES.length)}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-in-out motion-reduce:transition-none"
+            style={{ transform: `translateX(${(index - active) * 100}%)` }}
+          />
         ))}
+      </div>
 
-        {/* Caption scrim */}
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-deep-text/85 via-deep-text/40 to-transparent pt-20 pb-6 px-6">
-          <div className="flex items-end justify-between gap-4">
-            <p className="text-sm font-semibold text-white drop-shadow-sm">
-              {SLIDES[active].caption}
-            </p>
-            <div className="flex shrink-0 gap-2">
-              {SLIDES.map((slide, index) => (
-                <button
-                  key={slide.src}
-                  type="button"
-                  onClick={() => setActive(index)}
-                  aria-label={`Show slide ${index + 1}`}
-                  aria-current={index === active}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${
-                    index === active
-                      ? "w-8 bg-white"
-                      : "w-2.5 bg-white/50 hover:bg-white/80"
-                  }`}
-                />
-              ))}
-            </div>
+      <div className="mt-4 flex items-center justify-between gap-4 px-2">
+        <p className="text-sm font-semibold text-deep-text/70">{SLIDES[active].caption}</p>
+
+        <div className="flex shrink-0 items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setPaused((current) => !current)}
+            aria-label={paused ? "Play video" : "Pause video"}
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-brand-teal/20 bg-white text-brand-teal transition-colors hover:bg-brand-teal-light"
+          >
+            {paused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
+          </button>
+
+          <div className="flex gap-2">
+            {SLIDES.map((slide, index) => (
+              <button
+                key={slide.src}
+                type="button"
+                onClick={() => setActive(index)}
+                aria-label={`Show video ${index + 1}: ${slide.caption}`}
+                aria-current={index === active}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  index === active
+                    ? "w-8 bg-brand-magenta"
+                    : "w-2.5 bg-deep-text/20 hover:bg-deep-text/40"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
