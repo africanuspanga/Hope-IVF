@@ -78,6 +78,20 @@ export default async function ContactPage() {
                 </div>
               </div>
 
+              <p className="mt-6 text-sm leading-relaxed text-deep-text/70">
+                <span className="font-semibold text-deep-text">Careers notice:</span> All official{" "}
+                <a
+                  href="https://www.cvchapchap.com/"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-inherit no-underline decoration-deep-text/40 underline-offset-2 hover:underline focus-visible:underline"
+                >
+                  recruitment
+                </a>{" "}
+                for Hope IVF International is announced only on this website. We never charge fees or hire
+                through agents.
+              </p>
+
               <div className="mt-8">
                 <Link
                   href="/appointment"
