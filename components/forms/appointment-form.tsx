@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Calendar, CheckCircle, Loader2 } from "lucide-react";
+import { submitForm } from "@/lib/cms/submit";
 
 const REASONS = [
   "Fertility consultation",
@@ -20,6 +21,8 @@ const CONTACT_METHODS = ["Phone", "WhatsApp", "Email"];
 export function AppointmentForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -51,10 +54,11 @@ export function AppointmentForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate API call — replace with real integration (Supabase, email service, etc.)
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    setError("");
+    const result = await submitForm("appointment", { ...formData, website });
     setLoading(false);
-    setSubmitted(true);
+    if (result.ok) setSubmitted(true);
+    else setError(result.error);
   };
 
   if (submitted) {
@@ -75,7 +79,7 @@ export function AppointmentForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-3xl bg-white border border-slate-100 shadow-xl p-6 md:p-10"
+      className="relative rounded-3xl bg-white border border-slate-100 shadow-xl p-6 md:p-10"
     >
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
@@ -311,6 +315,24 @@ export function AppointmentForm() {
           understand this form is not for emergencies.
         </label>
       </div>
+
+      {/* Hidden from people; bots that fill it are ignored. */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        className="absolute -left-[9999px] h-0 w-0 opacity-0"
+      />
+
+      {error && (
+        <p role="alert" className="mt-6 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </p>
+      )}
 
       <div className="mt-8">
         <button

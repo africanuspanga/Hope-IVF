@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
-import { SERVICES } from "@/lib/services-data";
-import { RESOURCES } from "@/lib/resources-data";
+import { getResources, getServices } from "@/lib/cms/content";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [SERVICES, RESOURCES] = await Promise.all([getServices(), getResources()]);
   const baseUrl = "https://www.hopeivf.co.tz";
 
   const staticRoutes = [

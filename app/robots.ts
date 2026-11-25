@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/admin", "/login"],
     },
     sitemap: "https://www.hopeivf.co.tz/sitemap.xml",
   };

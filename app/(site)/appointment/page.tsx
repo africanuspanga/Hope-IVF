@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { AppointmentForm } from "@/components/forms/appointment-form";
 import { Phone, MessageCircle, Mail, MapPin, Clock, ShieldCheck } from "lucide-react";
-import { CLINIC } from "@/lib/site-data";
+import { getClinic } from "@/lib/cms/content";
 
 export const metadata: Metadata = {
   title: "Book an Appointment | Hope IVF International",
@@ -10,7 +10,8 @@ export const metadata: Metadata = {
     "Request a confidential fertility or women’s health appointment at Hope IVF International in Dar es Salaam. Our team will contact you privately.",
 };
 
-export default function AppointmentPage() {
+export default async function AppointmentPage() {
+  const CLINIC = await getClinic();
   return (
     <>
       <PageHero

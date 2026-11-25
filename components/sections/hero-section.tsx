@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Calendar, MessageCircle, CheckCircle } from "lucide-react";
-import { CLINIC } from "@/lib/site-data";
+import { getClinic, getHeroSlides } from "@/lib/cms/content";
 import { HeroSlider } from "@/components/sections/hero-slider";
 
 const HERO_POINTS = [
@@ -10,7 +10,8 @@ const HERO_POINTS = [
   "Dar es Salaam clinic",
 ];
 
-export function HeroSection() {
+export async function HeroSection() {
+  const [CLINIC, slides] = await Promise.all([getClinic(), getHeroSlides()]);
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-soft-pink via-white to-soft-teal">
       <div className="absolute -top-24 -left-24 h-80 w-80 rounded-full bg-brand-magenta/20 blur-3xl" />
@@ -68,7 +69,7 @@ export function HeroSection() {
 
             {/* Right image slider */}
             <div className="lg:pl-4">
-              <HeroSlider />
+              <HeroSlider slides={slides} />
             </div>
           </div>
         </div>

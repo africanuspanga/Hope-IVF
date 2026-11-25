@@ -2,19 +2,20 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, BookOpen } from "lucide-react";
-import { getResourceBySlug, RESOURCES } from "@/lib/resources-data";
+import { getResourceBySlug, getResources } from "@/lib/cms/content";
+import { RichText } from "@/components/cms/RichText";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return RESOURCES.map((resource) => ({ slug: resource.slug }));
+  return (await getResources()).map((resource) => ({ slug: resource.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const resource = getResourceBySlug(slug);
+  const resource = await getResourceBySlug(slug);
   if (!resource) return { title: "Resource Not Found" };
   return {
     title: `${resource.title} | Hope IVF International`,
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ResourceDetailPage({ params }: Props) {
   const { slug } = await params;
-  const resource = getResourceBySlug(slug);
+  const resource = await getResourceBySlug(slug);
   if (!resource) notFound();
 
   return (
@@ -64,9 +65,11 @@ export default async function ResourceDetailPage({ params }: Props) {
 
           <div className="prose prose-slate max-w-none">
             <p className="text-lg text-deep-text/80 leading-relaxed mb-8">{resource.excerpt}</p>
-            <p className="text-base md:text-lg text-deep-text/70 leading-relaxed whitespace-pre-line">
-              {resource.content}
-            </p>
+            {resource.image && (
+              // eslint-disable-next-line @next/next/no-img-element -- CMS image from any uploaded URL
+              <img src={resource.image} alt="" className="mb-10 w-full rounded-3xl object-cover" />
+            )}
+            <RichText source={resource.content} />
           </div>
 
           <div className="mt-12 pt-8 border-t border-slate-100">

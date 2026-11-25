@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/sections/page-hero";
 import { ArrowRight, BookOpen } from "lucide-react";
-import { RESOURCES } from "@/lib/resources-data";
+import { getResources } from "@/lib/cms/content";
 
 export const metadata: Metadata = {
   title: "Resources & Blog | Hope IVF International",
@@ -10,7 +10,8 @@ export const metadata: Metadata = {
     "Educational articles about IVF, fertility, IUI, PCOS, fibroids, endometriosis, and reproductive health from Hope IVF International in Dar es Salaam.",
 };
 
-export default function ResourcesPage() {
+export default async function ResourcesPage() {
+  const RESOURCES = await getResources();
   return (
     <>
       <PageHero

@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { CLINIC } from "@/lib/site-data";
 
-export function WhatsAppButton() {
+export function WhatsAppButton({ whatsapp = CLINIC.whatsapp }: { whatsapp?: string }) {
   return (
     <a
-      href={`https://wa.me/${CLINIC.whatsapp.replace(/\D/g, "")}`}
+      href={`https://wa.me/${whatsapp.replace(/\D/g, "")}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"

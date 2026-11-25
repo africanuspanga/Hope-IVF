@@ -1,8 +1,9 @@
 import { SectionHeader } from "@/components/ui/section-header";
 import { ServiceCard } from "@/components/ui/service-card";
-import { SERVICES } from "@/lib/services-data";
+import { getServices } from "@/lib/cms/content";
 
-export function ServicesOverview() {
+export async function ServicesOverview() {
+  const SERVICES = await getServices();
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

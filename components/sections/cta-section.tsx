@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Calendar, MessageCircle, Phone } from "lucide-react";
-import { CLINIC } from "@/lib/site-data";
+import { getClinic } from "@/lib/cms/content";
 
-export function CTASection() {
+export async function CTASection() {
+  const CLINIC = await getClinic();
   return (
     <section className="relative overflow-hidden py-20 md:py-28">
       <div className="absolute inset-0 bg-gradient-to-br from-brand-magenta via-brand-magenta to-brand-teal" />

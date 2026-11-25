@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
-import { CLINIC, NAV_LINKS } from "@/lib/site-data";
-import { SERVICES } from "@/lib/services-data";
+import { NAV_LINKS } from "@/lib/site-data";
+import { getClinic, getServices } from "@/lib/cms/content";
 
-export function Footer() {
+export async function Footer() {
+  const [CLINIC, services] = await Promise.all([getClinic(), getServices()]);
   const quickLinks = NAV_LINKS.filter((l) => ["/", "/about", "/services", "/doctors", "/appointment", "/contact"].includes(l.href));
-  const serviceLinks = SERVICES.slice(0, 7);
+  const serviceLinks = services.slice(0, 7);
 
   return (
     <footer className="bg-deep-text text-white">
@@ -106,9 +107,27 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="mt-14 pt-8 border-t border-white/10">
-          <p className="text-xs text-white/40">
-            © {new Date().getFullYear()} {CLINIC.name}. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs text-white/40">
+              © {new Date().getFullYear()} {CLINIC.name}. All rights reserved.
+            </p>
+            {CLINIC.socials.length > 0 && (
+              <ul className="flex flex-wrap gap-x-5 gap-y-2">
+                {CLINIC.socials.map((social) => (
+                  <li key={social.label}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-semibold text-white/60 hover:text-brand-magenta transition-colors"
+                    >
+                      {social.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </footer>

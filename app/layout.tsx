@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/site/navbar";
-import { Footer } from "@/components/site/footer";
-import { WhatsAppButton } from "@/components/site/whatsapp-button";
+import { GoogleTagManagerNoScript, GoogleTags } from "@/components/site/google-tags";
+import { getSettings } from "@/lib/cms/content";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -12,7 +11,7 @@ const manrope = Manrope({
   display: "swap",
 });
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Hope IVF International | Fertility & IVF Clinic in Dar es Salaam, Tanzania",
   description:
     "Hope IVF International provides confidential fertility consultations, IVF guidance, reproductive health care, and personalized treatment planning in Dar es Salaam, Tanzania.",
@@ -62,6 +61,14 @@ export const metadata: Metadata = {
   },
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSettings();
+  const verification = (settings.google_site_verification ?? "").trim();
+  return /^[A-Za-z0-9_-]{10,100}$/.test(verification)
+    ? { ...baseMetadata, verification: { google: verification } }
+    : baseMetadata;
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -99,10 +106,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-white text-deep-text">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <GoogleTagManagerNoScript />
+        {children}
+        <GoogleTags />
       </body>
     </html>
   );

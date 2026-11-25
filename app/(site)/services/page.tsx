@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/sections/page-hero";
 import { ServiceCard } from "@/components/ui/service-card";
-import { SERVICES, SERVICE_CATEGORIES } from "@/lib/services-data";
+import { getServiceCategories, getServices } from "@/lib/cms/content";
 import { Icon } from "@/components/ui/icon";
 
 export const metadata: Metadata = {
@@ -11,7 +11,8 @@ export const metadata: Metadata = {
     "Explore fertility, IVF, IUI, male fertility, fertility preservation, women’s health, and reproductive surgery services at Hope IVF International in Dar es Salaam.",
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const [SERVICES, SERVICE_CATEGORIES] = await Promise.all([getServices(), getServiceCategories()]);
   return (
     <>
       <PageHero

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/sections/page-hero";
 import { Phone, MessageCircle, Mail, MapPin, Clock, Calendar, FileText } from "lucide-react";
-import { CLINIC } from "@/lib/site-data";
+import { getClinic } from "@/lib/cms/content";
 
 export const metadata: Metadata = {
   title: "Contact Us | Hope IVF International",
@@ -20,7 +20,8 @@ const WHAT_TO_BRING = [
   "Partner details if attending together",
 ];
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const CLINIC = await getClinic();
   return (
     <>
       <PageHero

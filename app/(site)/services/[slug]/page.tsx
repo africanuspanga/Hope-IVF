@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Calendar, CheckCircle, AlertCircle } from "lucide-react";
-import { getServiceBySlug, SERVICES } from "@/lib/services-data";
+import { getServiceBySlug, getServices } from "@/lib/cms/content";
 import { FAQAccordion } from "@/components/ui/faq-accordion";
 import { Icon } from "@/components/ui/icon";
 
@@ -12,12 +12,12 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return SERVICES.map((service) => ({ slug: service.slug }));
+  return (await getServices()).map((service) => ({ slug: service.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlug(slug);
   if (!service) return { title: "Service Not Found" };
   return {
     title: `${service.title} | Hope IVF International`,
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlug(slug);
   if (!service) notFound();
 
   const structuredData = {
@@ -83,10 +83,14 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section className="py-16 md:py-24 bg-white">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           {/* What is */}
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-deep-text mb-4">What is this service?</h2>
-            <p className="text-base md:text-lg text-deep-text/70 leading-relaxed">{service.whatIs}</p>
-          </div>
+          {(service.whatIs || service.fullDescription) && (
+            <div className="mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-deep-text mb-4">What is this service?</h2>
+              <p className="text-base md:text-lg text-deep-text/70 leading-relaxed whitespace-pre-line">
+                {service.whatIs || service.fullDescription}
+              </p>
+            </div>
+          )}
 
           {service.image && (
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-slate-100 mb-12">

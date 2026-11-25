@@ -1,8 +1,9 @@
 import { SectionHeader } from "@/components/ui/section-header";
 import { DoctorCard } from "@/components/ui/doctor-card";
-import { DOCTORS } from "@/lib/doctors-data";
+import { getDoctors } from "@/lib/cms/content";
 
-export function DoctorsPreview() {
+export async function DoctorsPreview() {
+  const DOCTORS = await getDoctors();
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

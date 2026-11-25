@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { DoctorCard } from "@/components/ui/doctor-card";
-import { DOCTORS } from "@/lib/doctors-data";
+import { getDoctors } from "@/lib/cms/content";
 
 export const metadata: Metadata = {
   title: "Our Doctors | Hope IVF International",
@@ -9,7 +9,8 @@ export const metadata: Metadata = {
     "Meet the fertility and women’s health team at Hope IVF International in Dar es Salaam, including our IVF specialist and embryologist.",
 };
 
-export default function DoctorsPage() {
+export default async function DoctorsPage() {
+  const DOCTORS = await getDoctors();
   return (
     <>
       <PageHero
